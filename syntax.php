@@ -38,7 +38,7 @@ class syntax_plugin_facebook extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('{{fbfanbox>[0-9]+.*?}}',$mode,'plugin_facebook');
     }
 
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
 
         $data = array(
             'type'    => 'fanbox',
@@ -83,7 +83,7 @@ class syntax_plugin_facebook extends DokuWiki_Syntax_Plugin {
         return $data;
     }
 
-    function render($mode, &$R, $data) {
+    function render($mode, Doku_Renderer $R, $data) {
         if($mode != 'xhtml') return false;
 
         if($data['align'] == 'center'){
